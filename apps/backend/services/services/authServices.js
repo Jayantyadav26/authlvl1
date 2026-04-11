@@ -45,7 +45,7 @@ export const loginService = async (data) =>{
         }
 
         if(await bcrypt.compare(password,user[0].password)){
-            const token = jwt.sign({id: user[0].id}, process.env.TOKEN,{expiresIn: "1h"});
+            const token = jwt.sign({email: user[0].email}, process.env.TOKEN,{expiresIn: "1h"});
             return{
                 status:200,
                 response:{
