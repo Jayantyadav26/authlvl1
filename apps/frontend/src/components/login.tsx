@@ -1,17 +1,28 @@
 import React from "react";
+import { loginHandler } from "../handlers/apiHandler";
+import { useNavigate } from "react-router-dom";
 
 export const Login: React.FC =()=>{
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
 
-    const handleLogin = (e: React.FormEvent) => {
+    const navigate = useNavigate();
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
 
         if(password.length < 8){
             alert("Password must be at least 8 characters long.");
             return;
         }
-        
+
+        const response = await loginHandler(email, password);
+
+        if(response.status == 200 && response.token){
+            localStorage.setItem("token", response.token);
+            navigate("/dashboard");
+        }else{
+            alert(response.message || "Login failed. Please try again.");
+        } 
     }
 
     return(
