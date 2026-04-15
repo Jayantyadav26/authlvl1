@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { signupHandler } from "../handlers/apiHandler";
-
+import "./styles/signup.css"
 const Signup: React.FC =()=>{
 
     const[email, setEmail] = useState<string>("");

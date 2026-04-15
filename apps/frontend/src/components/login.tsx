@@ -1,6 +1,8 @@
 import React from "react";
 import { loginHandler } from "../handlers/apiHandler";
 import { useNavigate } from "react-router-dom";
+import "./styles/login.css";
+
 
 export const Login: React.FC =()=>{
     const [email, setEmail] = React.useState("");
@@ -17,7 +19,7 @@ export const Login: React.FC =()=>{
 
         const response = await loginHandler(email, password);
 
-        if(response.status == 200 && response.token){
+        if(response){
             localStorage.setItem("token", response.token);
             navigate("/dashboard");
         }else{
@@ -26,17 +28,13 @@ export const Login: React.FC =()=>{
     }
 
     return(
-        <div className="login-form">
+        <div className="login-container">
             <h2>Login</h2>
-            <form onSubmit={handleLogin}>
-                <div className="form-group">    
+            <form className="login-form" onSubmit={handleLogin}>   
                     <label htmlFor="username">Username:</label>
                     <input type="text" id="username" name="username" required onChange={(e) => setEmail(e.target.value)}/>
-                </div>
-                <div className="form-group">
                     <label htmlFor="password">Password:</label>
                     <input type="password" id="password" name="password" required onChange={(e) => setPassword(e.target.value)}/>
-                </div>
                 <button type="submit">Login</button>
             </form>
         </div>

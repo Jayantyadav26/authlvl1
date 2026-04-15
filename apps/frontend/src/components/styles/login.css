@@ -1,0 +1,35 @@
+.login-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    height: 100vh;
+    background-color: black;
+    color:#30A14E;
+    padding: 25px;
+}
+
+.login-form{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    width: 20%;
+}
+
+.login-form input{
+    background-color: transparent;
+    border: 1px solid #30A14E;
+    padding: 10px;
+    color: #30A14E;
+    border: 2px solid #30A14E;
+    border-radius: 5px;
+}
+
+.login-form button{
+    background-color: #30A14E;
+    color: black;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
+}
